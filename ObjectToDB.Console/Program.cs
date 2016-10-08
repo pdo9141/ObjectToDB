@@ -15,29 +15,30 @@ namespace ObjectToDB.Console
         static void Main(string[] args)
         {
             //XmlSerializeTest();
-            //XmlDeserializeTest();
+            XmlDeserializeTest();
             //BinarySerializeTest();
-            //BinaryDeserializeTest();
+            BinaryDeserializeTest();
             //JSONSerializeTest();
-            //JSONDeserializeTest();
+            JSONDeserializeTest();
 
             System.Console.ReadLine();
         }
         
         private static void XmlSerializeTest()
         {
-            /*
             UserDetail userDetail = new UserDetail
             {
                 UserName = "Morgan",
                 MailID = "Morgan@Domain.com"
             };
 
+            /*            
             using (var writer = XmlWriter.Create(@"C:\temp\userDetail.xml"))
                 serializer.Serialize(writer, userDetail);
             */
 
             BlueConsolePrinter consolePrinter = new BlueConsolePrinter { Context = "PHD" };
+            consolePrinter.UserDetail = userDetail;
             XmlSerializer serializer = new XmlSerializer(consolePrinter.GetType());
 
             StringBuilder sb = new StringBuilder();
@@ -132,13 +133,13 @@ namespace ObjectToDB.Console
         
         private static void BinarySerializeTest()
         {
-            /*
             UserDetail userDetail = new UserDetail
             {
                 UserName = "pdo",
                 MailID = "pdo9141@gmail.com"
             };
 
+            /*
             using (Stream stream = File.Open(@"C:\temp\userDetail.dat", FileMode.Create))
             {
                 var binaryFormatter = new BinaryFormatter();
@@ -147,6 +148,7 @@ namespace ObjectToDB.Console
             */
 
             BlueConsolePrinter consolePrinter = new BlueConsolePrinter { Context = "PHD" };
+            consolePrinter.UserDetail = userDetail;
             byte[] data = null;
             using (MemoryStream ms = new MemoryStream())
             {
@@ -217,18 +219,19 @@ namespace ObjectToDB.Console
 
         private static void JSONSerializeTest()
         {
-            /*
             UserDetail userDetail = new UserDetail
             {
                 UserName = "mdo",
                 MailID = "mdo9141@yahoo.com"
             };
-            
+
+            /*
             using (TextWriter writer = new StreamWriter(@"C:\temp\userDetail.json", false))
                 writer.Write(JsonConvert.SerializeObject(userDetail));
             */
 
             RedConsolePrinter consolePrinter = new RedConsolePrinter { Context = "PHD" };
+            consolePrinter.UserDetail = userDetail;
             using (SqlConnection cnn = new SqlConnection("Data Source=WayTooAwesome;Initial Catalog=Demos;Integrated Security=True"))
             {
                 cnn.Open();

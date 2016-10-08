@@ -5,6 +5,8 @@ namespace ObjectToDB.Contracts
     [Serializable]
     public class BlueConsolePrinter : IConsolePrinter
     {
+        public UserDetail UserDetail { get; set; }
+
         public string Context { get; set; }
 
         public string Name
