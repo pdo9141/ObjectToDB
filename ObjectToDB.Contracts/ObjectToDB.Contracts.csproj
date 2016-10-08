@@ -40,6 +40,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BlueConsolePrinter.cs" />
+    <Compile Include="IConsolePrinter.cs" />
+    <Compile Include="RedConsolePrinter.cs" />
     <Compile Include="UserDetail.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
